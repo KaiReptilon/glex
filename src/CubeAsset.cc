@@ -1,31 +1,32 @@
 #include "CubeAsset.h"
 
-CubeAsset::CubeAsset() {
-  // model coordinates, origin at centre.
+CubeAsset::CubeAsset(float x, float y) {
+  //model coordinates, origin at centre.
+  //Eight different sets of coordinates in order to determine where our cube will be on screen
   GLfloat vertex_buffer [] {
-    -0.5, -0.5, -0.5
-    , -0.5,  0.5, -0.5
-    ,  0.5, -0.5, -0.5
-    ,  0.5,  0.5, -0.5
-    , -0.5, -0.5,  0.5
-    , -0.5,  0.5,  0.5
-    ,  0.5, -0.5,  0.5
-    ,  0.5,  0.5,  0.5
+    x-0.5, y-0.5, -0.5
+    , x-0.5,  (y+0.5), -0.5
+    ,  (x+0.5), y-0.5, -0.5
+    ,  (x+0.5),  (y+0.5), -0.5
+    , x-0.5, y-0.5,  0.5
+    , x-0.5,  (y+0.5),  0.5
+    ,  (x+0.5), y-0.5,  0.5
+    ,  (x+0.5),  (y+0.5),  0.5
   };
-
+  //the drawing for the triangles in order to make up each square face
   element_buffer_length = 36;
   GLuint element_buffer []  {
-    0, 1, 2
-    , 1, 3, 2
-    , 0, 1, 4
-    , 1, 4, 5
-    , 4, 5, 6
-    , 5, 6, 7
-    , 0, 2, 4
-    , 2, 4, 6
-    , 2, 3, 6
-    , 3, 6, 7
-    , 1, 3, 5
+    0, 1, 2    //Side number 0
+    , 1, 3, 2  
+    , 0, 1, 4  //Side number 1
+    , 1, 4, 5  
+    , 4, 5, 6  //Side number 2
+    , 5, 6, 7  
+    , 0, 2, 4  //Side number 3
+    , 2, 4, 6  
+    , 2, 3, 6  //Side number 4
+    , 3, 6, 7  
+    , 1, 3, 5  //Side number 5
     , 3, 5, 7
   };
 
@@ -37,7 +38,7 @@ CubeAsset::CubeAsset() {
 
   // immediately bind the buffer and transfer the data
   glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer_token);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 72, vertex_buffer, GL_STATIC_DRAW);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 24, vertex_buffer, GL_STATIC_DRAW);
 
   glGenBuffers(1, &element_buffer_token);
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, element_buffer_token);
