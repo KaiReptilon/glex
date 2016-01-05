@@ -4,14 +4,14 @@ CubeAsset::CubeAsset(float x, float y, float z) {
   //model coordinates, origin at centre.
   //Eight different sets of coordinates in order to determine where our cube will be on screen
   GLfloat vertex_buffer [] {
-    x-0.5, y-0.5, z-0.5
-    , x-0.5,  (y+0.5), z-0.5
-    ,  (x+0.5), y-0.5, z-0.5
-    ,  (x+0.5),  (y+0.5), z-0.5
-    , x-0.5, y-0.5,  (z+0.5)
-    , x-0.5,  (y+0.5),  (z+0.5)
-    ,  (x+0.5), y-0.5,  (z+0.5)
-    ,  (x+0.5),  (y+0.5),  (z+0.5)
+    x-0.5    , y-0.5  , z-0.5
+    , x-0.5  , (y+0.5), z-0.5
+    , (x+0.5), y-0.5  , z-0.5
+    , (x+0.5), (y+0.5), z-0.5
+    , x-0.5  , y-0.5  , (z+0.5)
+    , x-0.5  , (y+0.5), (z+0.5)
+    , (x+0.5), y-0.5  , (z+0.5)
+    , (x+0.5), (y+0.5), (z+0.5)
   };
   //the drawing for the triangles in order to make up each square face
   element_buffer_length = 36;
