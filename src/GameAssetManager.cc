@@ -21,6 +21,17 @@ GameAssetManager::GameAssetManager(ApplicationMode mode) {
   };
 
   program_token = CreateGLProgram(vertex_shader, fragment_shader);
+  
+  projectionMatrix_link = glGetUniformLocation(program_token, "projectionMatrix");
+  translateMatrix_link = glGetUniformLocation(program_token, "translateMatrix");
+  viewMatrix_link = glGetUniformLocation(program_token, "viewMatrix");
+
+  projectionMatrix = glm::perspective(glm::radians(45.0f), (float) 640/ (float)480, 0.1f, 1000.0f);
+
+}
+
+void GameAssetManager::UpdateCameraPosition(Input input_Direction,int mouseX,int mouseY){
+  viewMatrix = controls.UpdateCameraPosition(input_Direction, mouseX, mouseY);
 }
 
 /**
@@ -31,29 +42,6 @@ GameAssetManager::~GameAssetManager() {
   glDeleteProgram(program_token);
 }
 
-/**
- * Unimplemented copy constructor -- this means that the GameAssetManager
- * may not work as you'd expect when being copied.
- */
-GameAssetManager::GameAssetManager(GameAssetManager const& the_manager) {
-  // TODO: implement this
-}
-
-/**
- * Unimplemented move constructor -- this unimplemented method violates the
- * C++11 move semantics for GameAssetManager.
- */
-GameAssetManager::GameAssetManager(GameAssetManager const&& the_manager) {
-  // TODO: implement this
-}
-
-/**
- * Unimplemented assisgnment operator -- violates the expected semantics for
- * assignment in C++11.
- */
-void GameAssetManager::operator=(GameAssetManager const& the_manager) {
-  // TODO: implement this
-}
 
 /**
  * Adds a GameAsset to the scene graph.
@@ -67,6 +55,9 @@ void GameAssetManager::AddAsset(std::shared_ptr<GameAsset> the_asset) {
  */
 void GameAssetManager::Draw() {
   for(auto ga: draw_list) {
+    glUniformMatrix4fv(projectionMatrix_link, 1, GL_FALSE, &projectionMatrix[0][0]);
+    glUniformMatrix4fv(viewMatrix_link, 1, GL_FALSE, &viewMatrix[0][0]);
+    glUniformMatrix4fv(translateMatrix_link, 1, GL_FALSE, &translateMatrix[0][0]);
     ga->Draw(program_token);
   }
 }
@@ -163,4 +154,28 @@ std::pair<GLchar *, GLint> GameAssetManager::ReadShader(std::string & shader) {
 
   input_file.close();
   return std::make_pair(buffer, length);
+}
+
+/**
+ * Unimplemented copy constructor -- this means that the GameAssetManager
+ * may not work as you'd expect when being copied.
+ */
+GameAssetManager::GameAssetManager(GameAssetManager const& the_manager) {
+  // TODO: implement this
+}
+
+/**
+ * Unimplemented move constructor -- this unimplemented method violates the
+ * C++11 move semantics for GameAssetManager.
+ */
+GameAssetManager::GameAssetManager(GameAssetManager const&& the_manager) {
+  // TODO: implement this
+}
+
+/**
+ * Unimplemented assisgnment operator -- violates the expected semantics for
+ * assignment in C++11.
+ */
+void GameAssetManager::operator=(GameAssetManager const& the_manager) {
+  // TODO: implement this
 }

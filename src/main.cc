@@ -143,6 +143,11 @@ int main(int argc, char ** argv) {
   auto mode = ParseOptions(argc, argv);
   auto window = InitWorld();
   auto game_world = std::make_shared<GameWorld>(mode);
+
+    int mouseX;
+    int mouseY;
+    const Uint8 *keyboard_state;
+    Input input_Direction = NONE;
   if(!window) {
     SDL_Quit();
   }
@@ -158,11 +163,31 @@ int main(int argc, char ** argv) {
       SDL_Quit();
       break;
     case SDL_USEREVENT:
+  {
+    SDL_GetRelativeMouseState(&mouseX, &mouseY);
+        
+        keyboard_state = SDL_GetKeyboardState(NULL);
+        if(keyboard_state[SDL_SCANCODE_S]) {
+          input_Direction = DOWN;
+        }else if(keyboard_state[SDL_SCANCODE_W]) {
+          input_Direction = UP;
+        }else if(keyboard_state[SDL_SCANCODE_A]) {
+          input_Direction = LEFT;
+        }else if(keyboard_state[SDL_SCANCODE_D]) {
+          input_Direction = RIGHT;
+        }else if(keyboard_state[SDL_SCANCODE_ESCAPE]) {
+          SDL_Quit();
+        }else{
+          input_Direction = NONE;
+        }
+     game_world->UpdateCameraPosition(input_Direction, mouseX, mouseY);
       Draw(window, game_world);
-
       break;
+        }
+
     default:
       break;
     }
   }
 }
+
