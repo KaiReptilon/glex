@@ -1,20 +1,36 @@
 #include "CubeAsset.h"
 
-CubeAsset::CubeAsset(float x, float y, float z) {
+CubeAsset::CubeAsset(GLfloat x, Glfloat y, GLfloat z) {
   //model coordinates, origin at centre.
   //Eight different sets of coordinates in order to determine where our cube will be on screen
   GLfloat vertex_buffer [] {
-    x-0.5    , y-0.5  , z-0.5
-    , x-0.5  , (y+0.5), z-0.5
-    , (x+0.5), y-0.5  , z-0.5
-    , (x+0.5), (y+0.5), z-0.5
-    , x-0.5  , y-0.5  , (z+0.5)
-    , x-0.5  , (y+0.5), (z+0.5)
-    , (x+0.5), y-0.5  , (z+0.5)
-    , (x+0.5), (y+0.5), (z+0.5)
+    -0.5f + x, -0.5f + y, -0.5f + z,
+    -0.5f + x,  0.5f + y, -0.5f + z,
+     0.5f + x, -0.5f + y, -0.5f + z,
+     0.5f + x,  0.5f + y, -0.5f + z,
+     0.5f + x, -0.5f + y,  0.5f + z,
+     0.5f + x,  0.5f + y,  0.5f + z,
+    -0.5f + x, -0.5f + y,  0.5f + z,
+    -0.5f + x,  0.5f + y,  0.5f + z
   };
+  GLfloat vertex_buffer_length =  sizeof(vertex_buffer);
+
+  GLfloat g_colour_buffer [] = {
+    
+     0.824f, 0.412f, 0.118f;
+     0.824f, 0.412f, 0.118f;
+     0.824f, 0.412f, 0.118f;
+     0.824f, 0.412f, 0.118f;
+     0.824f, 0.412f, 0.118f;
+     0.824f, 0.412f, 0.118f;
+     0.824f, 0.412f, 0.118f;
+     0.824f, 0.412f, 0.118f;
+  }; 
+    colour_buffer_lenght = sizeof(g_colour_buffer);
+
+
   //the drawing for the triangles in order to make up each square face
-  element_buffer_length = 36;
+  element_buffer_length = sizeof(element_buffer);
   GLuint element_buffer []  {
     0, 1, 2    //Side number 0
     , 1, 3, 2  
