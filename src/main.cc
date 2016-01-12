@@ -165,6 +165,7 @@ int main(int argc, char ** argv) {
     case SDL_USEREVENT:
   {
     SDL_GetRelativeMouseState(&MouseX, &MouseY);
+    /// scan code in order to detec keyboard input.
         
         keyboard_state = SDL_GetKeyboardState(NULL);
         if(keyboard_state[SDL_SCANCODE_S]) {

@@ -2,7 +2,7 @@
 
 PyramidAsset::PyramidAsset(GLfloat x, GLfloat y, GLfloat z) {
   ///model coordinates, origin at centre.
-  ///Eight different sets of coordinates in order to determine where our cube will be on screen
+  ///5 different sets of coordinates in order to determine where our pyramid will be on screen
   GLfloat vertex_buffer [] {
      x, y, 0.5f + z,
      0.5f + x,  0.5f + y, -0.5f + z,
@@ -24,7 +24,7 @@ PyramidAsset::PyramidAsset(GLfloat x, GLfloat y, GLfloat z) {
     color_buffer_length = sizeof(g_color_buffer);
 
 
-  ///the drawing for the triangles in order to make up each square face
+  ///the drawing for the triangles in order to make up each face of the pyramid
   GLuint element_buffer []  {
 
         0, 1, 2,

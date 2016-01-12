@@ -20,4 +20,4 @@ class CubeAsset : public GameAsset {
   GLuint vertex_buffer_token, element_buffer_token, color_buffer_token;
 };
 
-#endif // CUBEASSET_H
+#endif /// CUBEASSET_H

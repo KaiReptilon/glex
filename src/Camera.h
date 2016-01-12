@@ -4,6 +4,8 @@
 #include <glm/ext.hpp>
 #include "common.h"
 
+///definition of the Camera class, defines many of the variables used to calculate camera position
+
 class Camera{
   public:
     Camera();

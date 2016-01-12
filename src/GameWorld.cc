@@ -4,6 +4,8 @@ GameWorld::GameWorld (ApplicationMode mode) {
 
   asset_manager = std::make_shared<GameAssetManager>(mode);
 
+  /// the maxtric which will determine where our cubes will be draw on screen.
+
   int matrix [10][10]= {
     {1, 1, 2, 1, 1, 1, 1, 2, 1, 1},
     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
