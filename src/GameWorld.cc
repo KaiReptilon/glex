@@ -5,8 +5,8 @@ GameWorld::GameWorld (ApplicationMode mode) {
   asset_manager = std::make_shared<GameAssetManager>(mode);
 
   int matrix [10][10]= {
-    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-    {2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+    {1, 1, 2, 1, 1, 1, 1, 2, 1, 1},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     {0, 0, 0, 0, 2, 0, 0, 0, 0, 0},
     {0, 0, 0, 2, 0, 0, 0, 2, 0, 0},
     {0, 0, 0, 1, 0, 0, 0, 1, 0, 0},
@@ -15,7 +15,7 @@ GameWorld::GameWorld (ApplicationMode mode) {
     {0, 0, 0, 0, 0, 0, 0, 2, 0, 0},
     {0, 0, 0, 0, 0, 0, 0, 1, 0, 0},
     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-  };
+  }; 
   
   for( int x= 0; x < 10; x++)
   {

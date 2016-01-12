@@ -1,14 +1,14 @@
 #include "PyramidAsset.h"
 
 PyramidAsset::PyramidAsset(GLfloat x, GLfloat y, GLfloat z) {
-  //model coordinates, origin at centre.
-  //Eight different sets of coordinates in order to determine where our cube will be on screen
+  ///model coordinates, origin at centre.
+  ///Eight different sets of coordinates in order to determine where our cube will be on screen
   GLfloat vertex_buffer [] {
-    -0.5f + x, -0.5f + y, -0.5f + z,
-    -0.5f + x,  0.5f + y, -0.5f + z,
-     0.5f + x, -0.5f + y, -0.5f + z,
+     x, y, 0.5f + z,
      0.5f + x,  0.5f + y, -0.5f + z,
-     0.5f + x, -0.5f + y,  0.5f + z
+    -0.5f + x,  0.5f + y, -0.5f + z,
+    -0.5f + x, -0.5f + y, -0.5f + z,
+     0.5f + x, -0.5f + y, -0.5f + z
   };
   GLfloat vertex_buffer_length =  sizeof(vertex_buffer);
 
@@ -24,25 +24,25 @@ PyramidAsset::PyramidAsset(GLfloat x, GLfloat y, GLfloat z) {
     color_buffer_length = sizeof(g_color_buffer);
 
 
-  //the drawing for the triangles in order to make up each square face
+  ///the drawing for the triangles in order to make up each square face
   GLuint element_buffer []  {
 
         0, 1, 2,
         0, 2, 3,
-        0, 1, 4,
+        0, 3, 4,
+        0, 4, 1,
         1, 2, 4,
-        2, 3, 4,
-        0, 3, 4
+        1, 3, 4
 	
   };
   element_buffer_length = sizeof(element_buffer);
-  // Transfer buffers to the GPU
-  //
+  //// Transfer buffers to the GPU
+  ////
 
-  // create buffer
+  //// create buffer
   glGenBuffers(1, &vertex_buffer_token);
 
-  // immediately bind the buffer and transfer the data
+  /// immediately bind the buffer and transfer the data
   glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer_token);
   glBufferData(GL_ARRAY_BUFFER, vertex_buffer_length, vertex_buffer, GL_STATIC_DRAW);
 
@@ -61,7 +61,7 @@ PyramidAsset::~PyramidAsset() {
 #ifdef DEBUG
 #define checkGLError() checkError(__FILE__, __LINE__)
 #else
-// define symbol to be nothing
+/// define symbol to be nothing
 #define checkGLError()
 #endif
 
@@ -85,7 +85,7 @@ void PyramidAsset::Draw(GLuint program_token) {
     GLint maxLength = 0;
     glGetProgramiv(program_token, GL_INFO_LOG_LENGTH, &maxLength);
 
-    //The maxLength includes the NULL character
+    ///The maxLength includes the NULL character
     std::vector<char> errorLog(maxLength);
     glGetProgramInfoLog(program_token, maxLength, &maxLength, &errorLog[0]);
 
@@ -102,8 +102,8 @@ void PyramidAsset::Draw(GLuint program_token) {
   glUseProgram(program_token);
   checkGLError();
 
-  // use the previously transferred buffer as the vertex array.  This way
-  // we transfer the buffer once -- at construction -- not on every frame.
+  /// use the previously transferred buffer as the vertex array.  This way
+  /// we transfer the buffer once -- at construction -- not on every frame.
   glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer_token);
   glVertexAttribPointer(
                         0,              /* attribute */
