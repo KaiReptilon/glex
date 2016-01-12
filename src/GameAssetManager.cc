@@ -30,8 +30,8 @@ GameAssetManager::GameAssetManager(ApplicationMode mode) {
 
 }
 
-void GameAssetManager::UpdateCameraPosition(Input input_Direction,int mouseX,int mouseY){
-  viewMatrix = controls.UpdateCameraPosition(input_Direction, mouseX, mouseY);
+void GameAssetManager::UpdateCameraPosition(Input input_Direction,int MouseX,int MouseY){
+  viewMatrix = camera.UpdateCameraPosition(input_Direction, MouseX, MouseY);
 }
 
 /**

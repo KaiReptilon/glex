@@ -13,7 +13,7 @@
 
 #include "common.h"
 #include "GameAsset.h"
-#include "controls.h"
+#include "Camera.h"
 
 /**
  * GameAssetManager is a container for GameAssets.  It also provides utility
@@ -29,7 +29,7 @@ class GameAssetManager {
   void operator=(GameAssetManager const&); // assignment
   void AddAsset(std::shared_ptr<GameAsset>);
   void Draw();
-  void UpdateCameraPosition(Input, int mouseX, int mouseY);
+  void UpdateCameraPosition(Input, int MouseX, int MouseY);
 
  private:
   GLuint CreateGLProgram(std::string &, std::string &);
@@ -40,7 +40,7 @@ class GameAssetManager {
   // The internal scene graph is a simple list.
   std::vector<std::shared_ptr<GameAsset>> draw_list;
   GLuint program_token;
-  Controls controls;
+  Camera camera;
 
   //communication with camera
   

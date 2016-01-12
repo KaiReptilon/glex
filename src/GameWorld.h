@@ -28,7 +28,7 @@ class GameWorld {
    */
   void Draw();
 
-  void UpdateCameraPosition(Input, int mouseX, int mouseY);
+  void UpdateCameraPosition(Input, int MouseX, int MouseY);
   
  private:
   std::shared_ptr<GameAssetManager> asset_manager;
