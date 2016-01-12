@@ -1,6 +1,6 @@
-#include "CubeAsset.h"
+#include "PyramidAsset.h"
 
-CubeAsset::CubeAsset(GLfloat x, GLfloat y, GLfloat z) {
+PyramidAsset::PyramidAsset(GLfloat x, GLfloat y, GLfloat z) {
   //model coordinates, origin at centre.
   //Eight different sets of coordinates in order to determine where our cube will be on screen
   GLfloat vertex_buffer [] {
@@ -8,41 +8,32 @@ CubeAsset::CubeAsset(GLfloat x, GLfloat y, GLfloat z) {
     -0.5f + x,  0.5f + y, -0.5f + z,
      0.5f + x, -0.5f + y, -0.5f + z,
      0.5f + x,  0.5f + y, -0.5f + z,
-     0.5f + x, -0.5f + y,  0.5f + z,
-     0.5f + x,  0.5f + y,  0.5f + z,
-    -0.5f + x, -0.5f + y,  0.5f + z,
-    -0.5f + x,  0.5f + y,  0.5f + z
+     0.5f + x, -0.5f + y,  0.5f + z
   };
   GLfloat vertex_buffer_length =  sizeof(vertex_buffer);
 
   GLfloat g_color_buffer [] = {
+
+        0.000f, 1.000f, 1.000f,
+        0.000f, 1.000f, 1.000f,
+        0.000f, 1.000f, 1.000f,
+        0.000f, 1.000f, 1.000f,
+        0.000f, 1.000f, 1.000f
     
-     0.824f, 0.412f, 0.118f,
-     0.824f, 0.412f, 0.118f,
-     0.824f, 0.412f, 0.118f,
-     0.824f, 0.412f, 0.118f,
-     0.824f, 0.412f, 0.118f,
-     0.824f, 0.412f, 0.118f,
-     0.824f, 0.412f, 0.118f,
-     0.824f, 0.412f, 0.118f
   }; 
     color_buffer_length = sizeof(g_color_buffer);
 
 
   //the drawing for the triangles in order to make up each square face
   GLuint element_buffer []  {
-    	0, 1, 2,
-	1, 3, 2,
-	2, 3, 4,
-	3, 5, 4,
-	0, 2, 4,
-	6, 0, 4,
-	6, 7, 0,
-	1, 0, 7,
-	1, 7, 3,
-	7, 5, 3,
-	5, 6, 4,
-	5, 7, 6
+
+        0, 1, 2,
+        0, 2, 3,
+        0, 1, 4,
+        1, 2, 4,
+        2, 3, 4,
+        0, 3, 4
+	
   };
   element_buffer_length = sizeof(element_buffer);
   // Transfer buffers to the GPU
@@ -64,7 +55,7 @@ CubeAsset::CubeAsset(GLfloat x, GLfloat y, GLfloat z) {
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, element_buffer_length, element_buffer, GL_STATIC_DRAW);
 }
 
-CubeAsset::~CubeAsset() {
+PyramidAsset::~PyramidAsset() {
 }
 
 #ifdef DEBUG
@@ -74,7 +65,7 @@ CubeAsset::~CubeAsset() {
 #define checkGLError()
 #endif
 
-void checkError(std::string file, int line) {
+void PyramidAsset::checkError(std::string file, int line) {
   GLenum gl_error = glGetError();
   if(GL_NO_ERROR != gl_error) {
     std::cerr << "GL error in " << file << " at line " << line << " error: " << gl_error << std::endl;
@@ -82,7 +73,7 @@ void checkError(std::string file, int line) {
   }
 }
 
-void CubeAsset::Draw(GLuint program_token) {
+void PyramidAsset::Draw(GLuint program_token) {
   if(!glIsProgram(program_token)) {
     std::cerr << "Drawing Cube with invalid program" << std::endl;
     return;

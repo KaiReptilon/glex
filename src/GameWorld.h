@@ -8,6 +8,7 @@
 #include "common.h"
 #include "GameAssetManager.h"
 #include "CubeAsset.h"
+#include "PyramidAsset.h"
 
 /**
  * GameWorld allows us to separate the management of the game world from the
@@ -28,7 +29,7 @@ class GameWorld {
    */
   void Draw();
 
-  void UpdateCameraPosition(Input, int MouseX, int MouseY);
+  void UpdateCameraPosition(Input, float MouseX, float MouseY);
   
  private:
   std::shared_ptr<GameAssetManager> asset_manager;

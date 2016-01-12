@@ -305,7 +305,8 @@ GameWorld.o: GameWorld.cc /usr/include/stdc-predef.h GameWorld.h \
  /usr/include/glm/gtx/simd_vec4.inl /usr/include/glm/gtx/simd_mat4.hpp \
  /usr/include/glm/detail/intrinsic_matrix.hpp \
  /usr/include/glm/detail/intrinsic_matrix.inl \
- /usr/include/glm/gtx/simd_mat4.inl GameAsset.h Camera.h CubeAsset.h
+ /usr/include/glm/gtx/simd_mat4.inl GameAsset.h Camera.h CubeAsset.h \
+ PyramidAsset.h
 
 /usr/include/stdc-predef.h:
 
@@ -1160,3 +1161,5 @@ GameAsset.h:
 Camera.h:
 
 CubeAsset.h:
+
+PyramidAsset.h:

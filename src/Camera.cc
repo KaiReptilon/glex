@@ -10,47 +10,46 @@ Camera::Camera() {
   Right = glm::vec3(0,0,0);
   Up = glm::vec3(0,0,0);
 
-  horizontalAngle = 0;
-  verticalAngle = 0;
+  HorizontalAngle = 0;
+  VerticalAngle = 0;
 
   DeltaTimeX = 1;
   DeltaTimeY = 1;
   
-  CameraSpeed = 0.5;
+  CameraSpeed = 0.20;
 
-};
+}
 
 //Updates camera depending on the user input, will change the view matrix.
 
-  glm::mat4 UpdateCameraPosition( Input input_Direction, int MouseX, int MouseY);
+    glm::mat4 Camera::UpdateCameraPosition( Input input_Direction, int MouseX, int MouseY) {
+      DeltaTimeX = -MouseX;
+      DeltaTimeY = -MouseY;
 
-  DeltaTimeX = -MouseX;
-  DeltaTimeY = -MouseY;
-
-  horizontalAngle += 0.01 * DeltaTimeX;
+      HorizontalAngle += 0.01 * DeltaTimeX;
 
 //the following if statement will give the player x axis restriction
 
-  if((verticalAngle + (0.01 * DeltaTimeY)) < 1 && (verticalAngle + (0.01 * DeltaTimeY)) > -1) {
-    verticalAngle += 0.01 * DeltaTimeY;
+  if((VerticalAngle + (0.01 * DeltaTimeY)) < 1 && (VerticalAngle + (0.01 * DeltaTimeY)) > -1) {
+    VerticalAngle += 0.01 * DeltaTimeY;
   }
 
 // calculate of directions of view
 
-  Direction = glm::vec3(cos(verticalAngle) * sin(horizontalAngle),sin(verticalAngle),cos(verticalAngle) * cos(horizontalAngle));
-  Right = glm::vec3(sin(horizontalAngle - 3.14/2.0f),0,cos(horizontalAngle - 3.14/2.0f));
-  Up = glm::cross(Right, Direction);
+    Direction = glm::vec3(cos(VerticalAngle) * sin(HorizontalAngle),sin(VerticalAngle),cos(VerticalAngle) * cos(HorizontalAngle));
+    Right = glm::vec3(sin(HorizontalAngle - 3.14/2.0f),0,cos(HorizontalAngle - 3.14/2.0f));
+    Up = glm::cross(Right, Direction);
 
 //update current position of the camera/player depending on the users input
   
-    if( input_Direction == UP ) {
-        cameraPosition += glm::vec3(cos(verticalAngle) * sin(horizontalAngle),0,cos(verticalAngle) * cos(horizontalAngle))* CameraSpeed;
-    } else if( input_Direction == DOWN ) {
-        cameraPosition -= glm::vec3(cos(verticalAngle) * sin(horizontalAngle),0,cos(verticalAngle) * cos(horizontalAngle))* CameraSpeed;
-    } else if( input_Direction == LEFT) {
-        cameraPosition -= Right * CameraSpeed;
-    } else if( input_Direction == RIGHT) {
-        cameraPosition += Right * CameraSpeed;
+      if( input_Direction == UP ) {
+          cameraPosition += glm::vec3(cos(VerticalAngle) * sin(HorizontalAngle),0,cos(VerticalAngle) * cos(HorizontalAngle))* CameraSpeed;
+      } else if( input_Direction == DOWN ) {
+          cameraPosition -= glm::vec3(cos(VerticalAngle) * sin(HorizontalAngle),0,cos(VerticalAngle) * cos(HorizontalAngle))* CameraSpeed;
+      } else if( input_Direction == LEFT) {
+          cameraPosition -= Right * CameraSpeed;
+      } else if( input_Direction == RIGHT) {
+          cameraPosition += Right * CameraSpeed;
   }
 
 //return of view matrix
