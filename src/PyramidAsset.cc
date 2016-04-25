@@ -4,7 +4,7 @@ PyramidAsset::PyramidAsset(GLfloat x, GLfloat y, GLfloat z) {
   ///model coordinates, origin at centre.
   ///5 different sets of coordinates in order to determine where our pyramid will be on screen
   GLfloat vertex_buffer [] {
-     x, y, 0.5f + z,
+     x,  y,  0.5f + z,
      0.5f + x,  0.5f + y, -0.5f + z,
     -0.5f + x,  0.5f + y, -0.5f + z,
     -0.5f + x, -0.5f + y, -0.5f + z,

@@ -46,22 +46,20 @@ CubeAsset::CubeAsset(GLfloat x, GLfloat y, GLfloat z) {
   };
   element_buffer_length = sizeof(element_buffer);
   /// Transfer buffers to the GPU
-  ///
 
-  /// create buffer
-  glGenBuffers(1, &vertex_buffer_token);
+  	glGenBuffers(1, &vertex_buffer_token);
 
-  /// immediately bind the buffer and transfer the data
-  glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer_token);
-  glBufferData(GL_ARRAY_BUFFER, vertex_buffer_length, vertex_buffer, GL_STATIC_DRAW);
+	  /// immediately bind the buffer and transfer the data
+	  glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer_token);
+	  glBufferData(GL_ARRAY_BUFFER, vertex_buffer_length, vertex_buffer, GL_STATIC_DRAW);
 
-  glGenBuffers(1, &color_buffer_token);
-  glBindBuffer(GL_ARRAY_BUFFER, color_buffer_token);
-  glBufferData(GL_ARRAY_BUFFER, color_buffer_length, g_color_buffer, GL_STATIC_DRAW);
+	  glGenBuffers(1, &color_buffer_token);
+	  glBindBuffer(GL_ARRAY_BUFFER, color_buffer_token);
+	  glBufferData(GL_ARRAY_BUFFER, color_buffer_length, g_color_buffer, GL_STATIC_DRAW);
 
-  glGenBuffers(1, &element_buffer_token);
-  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, element_buffer_token);
-  glBufferData(GL_ELEMENT_ARRAY_BUFFER, element_buffer_length, element_buffer, GL_STATIC_DRAW);
+	  glGenBuffers(1, &element_buffer_token);
+	  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, element_buffer_token);
+	  glBufferData(GL_ELEMENT_ARRAY_BUFFER, element_buffer_length, element_buffer, GL_STATIC_DRAW);
 }
 
 CubeAsset::~CubeAsset() {
