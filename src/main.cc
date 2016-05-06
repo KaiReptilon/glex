@@ -147,6 +147,7 @@ int main(int argc, char ** argv) {
     int MouseX;
     int MouseY;
     const Uint8 *keyboard_state;
+    SDL_SetRelativeMouseMode(SDL_TRUE);
     Input input_Direction = NONE;
   if(!window) {
     SDL_Quit();
