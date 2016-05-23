@@ -2,7 +2,7 @@
 #define CUBEASSET_H
 
 #include <vector>
-
+#include <GL/glew.h>
 #include <GL/gl.h>
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
@@ -13,7 +13,6 @@ class CubeAsset : public GameAsset {
  public:
   CubeAsset(GLfloat x, GLfloat y, GLfloat z);
   ~CubeAsset();
-  virtual void Draw(GLuint);
 
  private:
   GLuint element_buffer_length, color_buffer_length;

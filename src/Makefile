@@ -107,7 +107,8 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_shaderexample_OBJECTS = main.$(OBJEXT) GameWorld.$(OBJEXT) \
 	GameAssetManager.$(OBJEXT) CubeAsset.$(OBJEXT) \
-	Camera.$(OBJEXT) PyramidAsset.$(OBJEXT) BoundingBox.$(OBJEXT)
+	Camera.$(OBJEXT) PyramidAsset.$(OBJEXT) BoundingBox.$(OBJEXT) \
+	GameAsset.$(OBJEXT)
 shaderexample_OBJECTS = $(am_shaderexample_OBJECTS)
 shaderexample_LDADD = $(LDADD)
 AM_V_lt = $(am__v_lt_$(V))
@@ -305,7 +306,7 @@ program_transform_name = s,x,x,
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
 sdl2_CFLAGS = -D_REENTRANT -I/usr/include/SDL2 
-sdl2_LIBS = -lSDL2 -lpthread 
+sdl2_LIBS = -lSDL2 
 sharedstatedir = ${prefix}/com
 srcdir = .
 sysconfdir = ${prefix}/etc
@@ -314,7 +315,7 @@ top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
 EXTRA_DIST = GameWorld.h GameAssetManager.h GameAsset.h CubeAsset.h Camera.h PyramidAsset.h BoundingBox.h
-shaderexample_SOURCES = main.cc GameWorld.cc GameAssetManager.cc CubeAsset.cc Camera.cc PyramidAsset.cc BoundingBox.cc
+shaderexample_SOURCES = main.cc GameWorld.cc GameAssetManager.cc CubeAsset.cc Camera.cc PyramidAsset.cc BoundingBox.cc GameAsset.cc
 AM_CPPFLAGS = -DGL_GLEXT_PROTOTYPES -DGL3_PROTOTYPES -std=c++11 \
 	$(gl_CFLAGS) $(glew_CFLAGS) $(sdl2_CFLAGS) $(BOOST_CPPFLAGS)
 all: all-am
@@ -413,6 +414,7 @@ distclean-compile:
 include ./$(DEPDIR)/BoundingBox.Po
 include ./$(DEPDIR)/Camera.Po
 include ./$(DEPDIR)/CubeAsset.Po
+include ./$(DEPDIR)/GameAsset.Po
 include ./$(DEPDIR)/GameAssetManager.Po
 include ./$(DEPDIR)/GameWorld.Po
 include ./$(DEPDIR)/PyramidAsset.Po

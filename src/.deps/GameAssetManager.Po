@@ -120,7 +120,7 @@ GameAssetManager.o: GameAssetManager.cc /usr/include/stdc-predef.h \
  /usr/include/c++/5.3.1/x86_64-redhat-linux/bits/basic_file.h \
  /usr/include/c++/5.3.1/x86_64-redhat-linux/bits/c++io.h \
  /usr/include/c++/5.3.1/bits/fstream.tcc /usr/include/c++/5.3.1/iostream \
- /usr/include/GL/gl.h /usr/include/GL/glext.h /usr/include/inttypes.h \
+ /usr/include/GL/glew.h /usr/include/GL/glu.h /usr/include/GL/gl.h \
  /usr/include/glm/ext.hpp /usr/include/glm/gtc/bitfield.hpp \
  /usr/include/glm/detail/setup.hpp /usr/include/c++/5.3.1/cassert \
  /usr/include/assert.h /usr/include/c++/5.3.1/cstddef \
@@ -305,7 +305,8 @@ GameAssetManager.o: GameAssetManager.cc /usr/include/stdc-predef.h \
  /usr/include/glm/gtx/simd_vec4.inl /usr/include/glm/gtx/simd_mat4.hpp \
  /usr/include/glm/detail/intrinsic_matrix.hpp \
  /usr/include/glm/detail/intrinsic_matrix.inl \
- /usr/include/glm/gtx/simd_mat4.inl common.h GameAsset.h Camera.h
+ /usr/include/glm/gtx/simd_mat4.inl common.h GameAsset.h BoundingBox.h \
+ Camera.h
 
 /usr/include/stdc-predef.h:
 
@@ -639,11 +640,11 @@ GameAssetManager.h:
 
 /usr/include/c++/5.3.1/iostream:
 
+/usr/include/GL/glew.h:
+
+/usr/include/GL/glu.h:
+
 /usr/include/GL/gl.h:
-
-/usr/include/GL/glext.h:
-
-/usr/include/inttypes.h:
 
 /usr/include/glm/ext.hpp:
 
@@ -1154,5 +1155,7 @@ GameAssetManager.h:
 common.h:
 
 GameAsset.h:
+
+BoundingBox.h:
 
 Camera.h:
