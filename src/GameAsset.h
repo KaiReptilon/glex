@@ -15,11 +15,11 @@
 class GameAsset {
 	public:
 		GameAsset(GLfloat, GLfloat, GLfloat);
-		void Draw(GLuint);
+		virtual void Draw(GLuint);
 
 	private:
-        GLuint element_buffer_length, vertex_buffer_length, colour_buffer_length;
-        GLuint vertex_buffer_token, element_buffer_token, colour_buffer_token;
+        GLuint element_buffer_length, vertex_buffer_length, color_buffer_length;
+        GLuint vertex_buffer_token, element_buffer_token, color_buffer_token;
 
         std::shared_ptr<Bounding_Box> box;
 
