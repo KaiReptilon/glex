@@ -8,6 +8,7 @@
 #include <fstream>
 #include <iostream>
 
+#include <GL/glew.h>
 #include <GL/gl.h>
 #include <glm/ext.hpp>
 
